@@ -1,0 +1,33 @@
+# Node.js
+node_modules/
+
+# Fichiers de configuration locaux
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Fichiers temporaires
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Cache de NPM
+.npm
+
+# Fichiers de sortie
+/dist
+/build
+
+# Fichiers de l'IDE (exemple pour VSCode)
+.vscode/
+
+# Fichiers spécifiques à l'OS
+.DS_Store
+Thumbs.db
+
+# Fichiers de votre projet qui ne devraient pas être suivis
+start.sh
+package-lock.json
+h
