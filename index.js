@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
@@ -8,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:5174",
+        origin: "http://localhost:5173",
         methods: ["GET", "POST"]
     }
 });
@@ -42,7 +43,7 @@ io.on("connection", (socket) => {
 
             console.log(`✅ ${username} (ID: ${userId}) connecté avec socket ID : ${socket.id}`);
         } catch (error) {
-            console.error("❌ Authentification échouée :", error.message);
+            console.error("❌ Authentification échouée :", error.message + `${process.env.STRAPI_URL}`);
             socket.disconnect();
         }
     });
