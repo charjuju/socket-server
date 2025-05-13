@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
     socket.on("authenticate", async (token) => {
         try {
             console.log("🔎 Demande d'infos à Strapi...");
-            const response = await axios.get('http://localhost:1337/api/users/me', {
+            const response = await axios.get(`${process.env.STRAPI_URL}/api/users/me`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
@@ -76,7 +76,7 @@ io.on("connection", (socket) => {
 
         try {
             // 💾 Enregistrement dans Strapi
-            await axios.post('http://localhost:1337/api/messages', {
+            await axios.post(`${process.env.STRAPI_URL}/api/messages`, {
                 data: {
                     content,
                     sender: userId,
@@ -84,7 +84,7 @@ io.on("connection", (socket) => {
                 }
             }, {
                 headers: {
-                    Authorization: `Bearer ccd008e7ed443b8e9cab7eeb2b535a96be876a69ec62147f7fb3e4464dcd5e48432042889537b177ed698ce5a5a7642c1c1a9fb106b08016040ed5fdacaa70897b75014889918fd7df1bce118f0b2d7b19d4aad7e32dbfedf0de08deae4fde0d488c87e5aeb1e331af2de262bbf87ab7d1feaa8eacd0346bf1bebadfb1abb538`
+                    Authorization: `Bearer ${process.env.BEARER}`
                 }
             });
 
